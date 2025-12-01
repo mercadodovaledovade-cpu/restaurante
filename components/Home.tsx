@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageView } from '../types';
+import { PageView } from '../types.ts';
 import { ArrowRight, Sparkles, Clock, Leaf } from 'lucide-react';
 
 interface HomeProps {

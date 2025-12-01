@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { generateRecipeFromIngredients } from '../services/geminiService';
-import { Recipe } from '../types';
+import { generateRecipeFromIngredients } from '../services/geminiService.ts';
+import { Recipe } from '../types.ts';
 import { ChefHat, Timer, Flame, BarChart, Loader2, Share2, Printer } from 'lucide-react';
 
 const RecipeGenerator: React.FC = () => {

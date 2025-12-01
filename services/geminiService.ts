@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import { Recipe } from "../types";
+import { Recipe } from "../types.ts";
 
 const apiKey = process.env.API_KEY;
 const ai = new GoogleGenAI({ apiKey: apiKey });
@@ -8,7 +8,8 @@ const ai = new GoogleGenAI({ apiKey: apiKey });
 const checkKey = () => {
   if (!apiKey) {
     console.error("API Key is missing in process.env.API_KEY");
-    throw new Error("API Key configuration error");
+    // We don't throw here to avoid crashing the app immediately if the key is lazy loaded, 
+    // but the API call will fail later if it's still missing.
   }
 };
 
@@ -51,7 +52,11 @@ export const generateRecipeFromIngredients = async (ingredients: string): Promis
 
     const text = response.text;
     if (!text) throw new Error("No data returned");
-    return JSON.parse(text) as Recipe;
+    
+    // Clean up potential markdown formatting (```json ... ```)
+    const cleanText = text.replace(/```json\s*|\s*```/g, "").trim();
+    
+    return JSON.parse(cleanText) as Recipe;
 
   } catch (error) {
     console.error("Error generating recipe:", error);

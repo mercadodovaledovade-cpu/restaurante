@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import RecipeGenerator from './components/RecipeGenerator';
-import ChefChat from './components/ChefChat';
-import Footer from './components/Footer';
-import { PageView } from './types';
+import Navbar from './components/Navbar.tsx';
+import Home from './components/Home.tsx';
+import RecipeGenerator from './components/RecipeGenerator.tsx';
+import ChefChat from './components/ChefChat.tsx';
+import Footer from './components/Footer.tsx';
+import { PageView } from './types.ts';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<PageView>(PageView.HOME);

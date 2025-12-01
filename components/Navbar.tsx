@@ -1,6 +1,6 @@
 import React from 'react';
 import { UtensilsCrossed, ChefHat, MessageSquareText, Search } from 'lucide-react';
-import { PageView } from '../types';
+import { PageView } from '../types.ts';
 
 interface NavbarProps {
   currentView: PageView;
